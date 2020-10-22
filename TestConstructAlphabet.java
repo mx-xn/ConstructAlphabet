@@ -19,6 +19,7 @@ public class TestConstructAlphabet {
      * @param invalidTestCases
      */
     public static void runTest(Map<String[], List<List<Character>>> validTestCases, List<String[]> invalidTestCases) {
+        // test all valid input
         int i = 0;
         for (Map.Entry<String[], List<List<Character>>> entry : validTestCases.entrySet()) {
             List<Character> res = ConstructAlphabeticOrder.constructAlphabet(entry.getKey());
@@ -36,6 +37,7 @@ public class TestConstructAlphabet {
             i++;
         }
 
+        // test all invalid input
         i = 0;
         for (String[] invalidInput : constructInvalidTestCases()) {
             try {
@@ -130,11 +132,14 @@ public class TestConstructAlphabet {
         return validTestCases;
     }
 
+    /**
+     *
+     * @return a list of invalid input words array
+     */
     public static List<String[]> constructInvalidTestCases() {
         List<String[]> invalidCases = new ArrayList<>();
-        invalidCases.add(new String[]{"bcaaa", "bca"});     // case0: first word longer than second
-        invalidCases.add(new String[]{"ba", "bb", "ac"});   // case1: impossible input, a cannot be smaller and greater than b
-
+        invalidCases.add(new String[]{"bcaaa", "bca"});     // case0: first word longer than second, not sorted
+        invalidCases.add(new String[]{"ba", "bb", "ac"});   // case1: impossible input, a cannot be smaller and greater than b same time
 
         return invalidCases;
     }
