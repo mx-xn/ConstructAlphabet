@@ -18,6 +18,7 @@ public class ConstructAlphabeticOrder {
     /**
      *
      * @param words: the input list of words
+     * @throws IllegalArgumentException if the input string[] is invalid
      * @return a List of characters in the order of the alphabet
      */
     public static List<Character> constructAlphabet(String[] words) throws IllegalArgumentException{
@@ -37,10 +38,10 @@ public class ConstructAlphabeticOrder {
         Map<Character, Set<Character>> greaterChars = new HashMap<>();
         int[] numSmallerChars = new int[26];
         
-        // construct the graph from input word list
+        // construct the "graph" from input word list
         constructGraph(words, greaterChars, numSmallerChars);
 
-        // construct alphabetical order by removing letter with no smaller chars and corresponding edges
+        // construct alphabetical order by removing letter with no smaller chars and corresponding edges, and then repeat
         List<Character> order = constructOrderAsList(greaterChars, numSmallerChars);
         return order;
     }
@@ -49,6 +50,7 @@ public class ConstructAlphabeticOrder {
      *
      * @param greaterChars: a map with key-value pair as letter l - set of letters k greater than l
      * @param numSmallerChars: array holding # of letters smaller than letter corresponding to each index
+     * @throws IllegalArgumentException if the input string[] is invalid
      * @return StringBuilder holding
      */
     private static List<Character> constructOrderAsList(Map<Character, Set<Character>> greaterChars, int[] numSmallerChars)
@@ -85,6 +87,7 @@ public class ConstructAlphabeticOrder {
      * @param words: list of words given
      * @param greaterChars: a map with key-value pair as letter l - set of letters k greater than l
      * @param numSmallerChars: array holding # of letters smaller than letter corresponding to each index
+     * @throws IllegalArgumentException if the input string[] is invalid
      * @return false if the input is already found invalid, true otherwise
      */
     private static void constructGraph(String[] words, Map<Character, Set<Character>> greaterChars, int[] numSmallerChars)
@@ -107,7 +110,7 @@ public class ConstructAlphabeticOrder {
 
                 // char at prev is smaller than that at next
                 if (prevChar != nextChar) {
-                    // if this "edge" has not already existed
+                    // if this "pointer" has not already existed
                     if (!greaterChars.get(prevChar).contains(nextChar)) {
                         greaterChars.get(prevChar).add(nextChar);
                         numSmallerChars[nextChar - 'a']++;
@@ -116,7 +119,8 @@ public class ConstructAlphabeticOrder {
                     break;
                 }
             } 
-            
+
+            // add all other characters in two words if not already existed in map
             while (digit < Math.max(prev.length(), next.length())) {
                 if (digit < prev.length())
                     addToMapIfNotExist(Character.toLowerCase(prev.charAt(digit)), greaterChars);
@@ -141,7 +145,7 @@ public class ConstructAlphabeticOrder {
 
     /**
      *
-     * Read in a file containing a list of words
+     * Read in a file containing a list of words, and print out the correct alphabetic order
      */
     public static void main(String[] args) {
         BufferedReader br = null;
