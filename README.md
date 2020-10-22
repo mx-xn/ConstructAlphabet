@@ -21,7 +21,7 @@ Run following commands in terminal:
 
 ## how to run
  - run construct alphabet method:
-   - run by giving input file: java ConstructAlphabeticOrder [inputfile name]
+   - run by giving input file: *java ConstructAlphabeticOrder [inputfile name]*
    - run by calling method directly, use the following code: (refer more details in TestConstructAlphabet.java)
         *ConstructAlphabeticOrder.constructAlphabet([$input String array])*
  - run Test class: *java TestConstructAlphabet* (more test details can be found in the java file, and please feel free to add more test cases if you'd like)
