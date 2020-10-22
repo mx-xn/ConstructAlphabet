@@ -9,10 +9,12 @@ and output the correct order in a character list
 
 ## ConstructAlphabeticOrder.constructAlphabet
 **input**
+
 An array of words, pre-sorted in the to-be-computed alphabetical order
 All characters of words are either uppercase or lowercase english letter
 
 **output**
+
 List of lowercase Characters representing the alphabetical order
 
 **special cases**
@@ -35,6 +37,7 @@ Run following commands in terminal:
 ## algorithm explanation
 The algorithm construct a "graph" based on given input. We have a hashMap so that each character *c* points to a set of characters *k* greater than *c*, and 
 an int array to keep number of characters smaller than each character *c*.
+
 **Note: all characters *c* are pointed by a smaller character *k*, and we keep record of the number of such *k*'s**
 
 The algorithm then start removing the character *c* with no smaller characters before it, and all the out going pointers *p* from *c*. After removing *c*, we
