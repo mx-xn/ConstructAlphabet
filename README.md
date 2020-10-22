@@ -17,6 +17,7 @@ List of lowercase Characters representing the alphabetical order
 **special cases**
  - If input is an empty array or array of empty strings, return an empty List
  - If input has multiple valid outputs, return one of the valid ordering
+ - If input is invalid, throws illegal argument exception
 
 ## how to compile
 Run following commands in terminal:
