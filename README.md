@@ -10,6 +10,7 @@ and output the correct order in a character list
 ## ConstructAlphabeticOrder.constructAlphabet
 **input**
 An array of words, pre-sorted in the to-be-computed alphabetical order
+All characters of words are either uppercase or lowercase english letter
 
 **output**
 List of lowercase Characters representing the alphabetical order
